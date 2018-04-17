@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-cookies.js"></script>
+    <script src="../scripts/LoginApp.js"></script>
+    <script src="../scripts/LoginService.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/signin.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/fontawesome-all.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="LoginApp" ng-controller="CustomerDetailsController">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../index.html">FlowerPop</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" ng-if="customername">
+                <ul class="nav navbar-nav">
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Hi! {{customername}}</a></li>
+                    <li><a ng-click="logOut()"><span class="fas fa-sign-out-alt"></span>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h2 class="text-center">Your Information</h2>
+    <form name="loginForm" class="form-signin">
+        <label class="sr-only">Email:</label>
+        <input class="form-control" type="text" value="{{customername}}" ng-model="customername" required />
+        <label class="sr-only">Password: </label>
+        <input class="form-control" type="text" value="{{customersurname}}" ng-model="customersurname" required />
+        <label class="sr-only">Password: </label>
+        <input class="form-control" type="text" value="{{customermobile}}" ng-model="customermobile" required />
+        <input class="form-control" type="text" value="{{customergender}}" ng-model="customergender" required />
+        <input class="form-control" type="text" value="{{customeremail}}" ng-model="customeremail" required /> <br />
+        <button class="btn cart-button btn-lg btn-block" ng-click="updateCustomer()" type="submit">Update</button>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="netfloristModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="netfloristModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Payments" Relationship="netfloristModel.FK_Payment_Customer" FromRole="Customer" ToRole="Payment" />
+  </EntityType>
+  <EntityContainer Name="netfloristEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Products" EntityType="netfloristModel.Product" />
+    <EntitySet Name="Images" EntityType="netfloristModel.Image" />
+    <AssociationSet Name="FK_Images_Product" Association="netfloristModel.FK_Images_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <EntitySet Name="Product_Images" EntityType="netfloristModel.Product_Images" />
+    <EntitySet Name="Administrators" EntityType="netfloristModel.Administrator" />
+    <EntitySet Name="Orders" EntityType="netfloristModel.Order" />
+    <EntitySet Name="Suppliers" EntityType="netfloristModel.Supplier" />
+    <AssociationSet Name="FK_Order_Customer" Association="netfloristModel.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="netfloristModel.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="Drivers" EntityType="netfloristModel.Driver" />
+    <EntitySet Name="ProductOrders" EntityType="netfloristModel.ProductOrder" />
+    <AssociationSet Name="FK_ProductOrder_Driver" Association="netfloristModel.FK_ProductOrder_Driver">
+      <End Role="Driver" EntitySet="Drivers" />
+      <End Role="ProductOrder" EntitySet="ProductOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOrder_Order" Association="netfloristModel.FK_ProductOrder_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="ProductOrder" EntitySet="ProductOrders" />
+    </AssociationSet>
+    <EntitySet Name="Payments" EntityType="netfloristModel.Payment" />
+    <AssociationSet Name="FK_Payment_Customer" Association="netfloristModel.FK_Payment_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Order" Association="netfloristModel.FK_Payment_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <EntitySet Name="Deliveries" EntityType="netfloristModel.Delivery" />
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <NavigationProperty Name="Images" Relationship="netfloristModel.FK_Images_Product" FromRole="Product" ToRole="Image" />
+    <Property Name="SupplierID" Type="Int32" Nullable="false" />
+    <Property Name="ProductQuantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Supplier" Relationship="netfloristModel.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="netfloristModel.FK_Images_Product" FromRole="Image" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Images_Product">
+    <End Type="netfloristModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="netfloristModel.Image" Role="Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product_Images">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="ProductCategory" />
+      <PropertyRef Name="ProductDescription" />
+      <PropertyRef Name="ProductPrice" />
+      <PropertyRef Name="Picture" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverSurname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverCellNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Suburb" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="netfloristModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <Property Name="totalAmount" Type="Decimal" Precision="9" Scale="2" />
+    <NavigationProperty Name="ProductOrders" Relationship="netfloristModel.FK_ProductOrder_Order" FromRole="Order" ToRole="ProductOrder" />
+    <NavigationProperty Name="Payments" Relationship="netfloristModel.FK_Payment_Order" FromRole="Order" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierPassword" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="netfloristModel.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Order_Customer">
+    <End Type="netfloristModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="netfloristModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Type="netfloristModel.Supplier" Role="Supplier" Multiplicity="1" />
+    <End Type="netfloristModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DriverSurname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DriverEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProductOrders" Relationship="netfloristModel.FK_ProductOrder_Driver" FromRole="Driver" ToRole="ProductOrder" />
+  </EntityType>
+  <EntityType Name="ProductOrder">
+    <Key>
+      <PropertyRef Name="ProdOrderID" />
+    </Key>
+    <Property Name="ProdOrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="Products" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DriverID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Driver" Relationship="netfloristModel.FK_ProductOrder_Driver" FromRole="ProductOrder" ToRole="Driver" />
+    <NavigationProperty Name="Order" Relationship="netfloristModel.FK_ProductOrder_Order" FromRole="ProductOrder" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_ProductOrder_Driver">
+    <End Type="netfloristModel.Driver" Role="Driver" Multiplicity="1" />
+    <End Type="netfloristModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="DriverID" />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="DriverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOrder_Order">
+    <End Type="netfloristModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="netfloristModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" />
+    <Property Name="BankName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CardholderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CardNumber" Type="Int32" Nullable="false" />
+    <Property Name="ExpiryMonth" Type="Int32" Nullable="false" />
+    <Property Name="ExpiryYear" Type="Int32" Nullable="false" />
+    <Property Name="CVV" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="netfloristModel.FK_Payment_Customer" FromRole="Payment" ToRole="Customer" />
+    <NavigationProperty Name="Order" Relationship="netfloristModel.FK_Payment_Order" FromRole="Payment" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Payment_Customer">
+    <End Type="netfloristModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="netfloristModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Order">
+    <End Type="netfloristModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="netfloristModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Delivery">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="ReceiverName" />
+      <PropertyRef Name="ReceiverSurname" />
+      <PropertyRef Name="ReceiverCellNumber" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="Suburb" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="DeliveryStatus" />
+      <PropertyRef Name="Products" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="DriverID" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="ReceiverEmail" />
+      <PropertyRef Name="PostalCode" />
+      <PropertyRef Name="City" />
+    </Key>
+    <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverSurname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverCellNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Suburb" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DeliveryStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Products" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DriverID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReceiverEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="totalAmount" Type="Decimal" Precision="9" Scale="2" />
+  </EntityType>
+</Schema>

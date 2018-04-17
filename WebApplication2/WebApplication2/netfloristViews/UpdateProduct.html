@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-cookies.js"></script>
+    <script src="../scripts/LoginApp.js"></script>
+    <script src="../scripts/LoginService.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="../Content/fontawesome-all.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="LoginApp">
+    <h2 class="text-center">Edit Product</h2>
+    <div class="container" ng-controller="ProductsController">
+        <form name="ProductForm" class="form-signin" >
+            <label class="sr-only">Product ID</label>
+            <input class="form-control" type="text" placeholder="ProductID" maxlength="4" name="ProductID" value="{{ProductID}}" ng-model="ProductID" required />
+            <label class="sr-only">ProductName:</label>
+            <input name="ProductName" class="form-control" type="text" placeholder="ProductName" value="{{ProductName}}" ng-model="ProductName" required />
+            <label class="sr-only">ProductDescription</label>
+            <input name="ProductDescription" class="form-control" type="text" placeholder="ProductDescription" ng-model="ProductDescription" required />
+            <select class="form-control" name="Category" id="ProductCategory" ng-model="ProductCategory" required>
+                <option>Flowers</option>
+                <option>Gourmet</option>
+                <option>Chocolate</option>
+            </select>
+            <input name="ProductQuantity" class="form-control" type="text" placeholder="ProductQuantity" value="{{ProductQuantity}}" ng-model="ProductQuantity" required />
+            <label class="sr-only">ProductDescription</label>
+            <input name="ProductDescription" class="form-control" type="text" placeholder="SupplierID" value="{{SupplierID}}" ng-model="SupplierID" required />
+            <label class="sr-only">Product Price</label>
+            <input name="ProductPrice" class="form-control" type="text" placeholder="ProductPrice" ng-model="ProductPrice" required />
+            <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="EditProducts()" value="Submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

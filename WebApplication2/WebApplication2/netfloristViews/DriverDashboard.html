@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-cookies.js"></script>
+    <script src="../scripts/LoginApp.js"></script>
+    <script src="../scripts/LoginService.js"></script>
+    <script src="../scripts/jquery-1.10.2.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="../Content/fontawesome-all.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body style="padding-top:50px" ng-app="LoginApp" ng-controller="DriverDetailsController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">FlowerPop</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" ng-if="drivername">
+                <ul class="nav navbar-nav">
+                </ul>
+                <form class="navbar-form navbar-left" action="">
+                    <div class="input-group">
+                        <input id="search" type="text" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn search-button" type="submit">
+                                <i class="fas fa-search icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="Login.html" data-toggle="dropdown">
+                            My Account
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="EditDriverInfo.html"><i class="fas fa-user"></i> Account Info</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Hi! {{drivername}}</a></li>
+                    <li><a ng-click="logOut()"><span class="fas fa-sign-out-alt"></span>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 class="text-center">Deliveries</h2>
+    <div class="container" >
+        <table class="table table-hover table-responsive table-bordered">
+            <tr>
+                <th>OrderID</th>
+                <th>Products</th>
+                <th>ReceiverName</th>
+                <th>ReceiverSurname</th>
+                <th>Cell Number</th>
+                <th>Street Address</th>
+                <th>Quantity</th>
+                <th>Delivery Date</th>
+                <th>Status</th>
+            </tr>
+
+            <tr ng-repeat="d in data">
+                <td>{{d.OrderID}}</td>
+                <td>{{d.Products}}</td>
+                <td>{{d.ReceiverName}}</td>
+                <td>{{d.ReceiverSurname}}</td>
+                <td>{{d.ReceiverCellNumber}}</td>
+                <td>{{d.StreetAddress}}</td>
+                <td>{{d.Quantity}}</td>
+                <td>{{d.DeliveryDate}}</td>
+                <td>{{d.DeliveryStatus}}</td>
+                <td>
+                    <select class="" name="DeliveryStatus" id="DeliveryStatus" ng-model="d.DeliveryStatus" required>
+                        <option>Pending</option>
+                        <option>Delivered</option>
+                    </select>
+                </td>
+                <td><a href="" class="btn cart-button btn-lg center-block" ng-click="EditDeliveryStatus(d)">Update Status</a></td>
+            </tr>
+        </table>
+        </div>
+</body>
+</html>

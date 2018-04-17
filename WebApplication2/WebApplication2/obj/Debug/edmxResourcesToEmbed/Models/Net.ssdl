@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="netfloristModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Surname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverName" Type="varchar(max)" Nullable="false" />
+    <Property Name="DriverSurname" Type="varchar(max)" Nullable="false" />
+    <Property Name="DriverEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiverName" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReceiverSurname" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReceiverEmail" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReceiverCellNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="StreetAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="Suburb" Type="varchar(max)" Nullable="false" />
+    <Property Name="DeliveryDate" Type="date" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar(max)" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+    <Property Name="OrderStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar(max)" Nullable="false" />
+    <Property Name="totalAmount" Type="decimal" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" Nullable="false" />
+    <Property Name="BankName" Type="varchar(max)" Nullable="false" />
+    <Property Name="CardholderName" Type="varchar(max)" Nullable="false" />
+    <Property Name="CardNumber" Type="int" Nullable="false" />
+    <Property Name="ExpiryMonth" Type="int" Nullable="false" />
+    <Property Name="ExpiryYear" Type="int" Nullable="false" />
+    <Property Name="CVV" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" Nullable="false" />
+    <Property Name="City" Type="varchar(max)" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar(max)" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductPrice" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="SupplierID" Type="int" Nullable="false" />
+    <Property Name="ProductQuantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductOrder">
+    <Key>
+      <PropertyRef Name="ProdOrderID" />
+    </Key>
+    <Property Name="ProdOrderID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="Products" Type="varchar(max)" Nullable="false" />
+    <Property Name="DriverID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierName" Type="varchar(max)" Nullable="false" />
+    <Property Name="SupplierEmail" Type="varchar(max)" Nullable="false" />
+    <Property Name="SupplierPassword" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'netflorist.dbo.Delivery' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Delivery">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="ReceiverName" />
+      <PropertyRef Name="ReceiverSurname" />
+      <PropertyRef Name="ReceiverCellNumber" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="Suburb" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="DeliveryStatus" />
+      <PropertyRef Name="Products" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="DriverID" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="ReceiverEmail" />
+      <PropertyRef Name="PostalCode" />
+      <PropertyRef Name="City" />
+    </Key>
+    <Property Name="CustomerID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiverName" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReceiverSurname" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReceiverCellNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="StreetAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="Suburb" Type="varchar(max)" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+    <Property Name="DeliveryStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Products" Type="varchar(max)" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="DriverID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="DeliveryDate" Type="date" Nullable="false" />
+    <Property Name="ReceiverEmail" Type="varchar(max)" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar(max)" Nullable="false" />
+    <Property Name="City" Type="varchar(max)" Nullable="false" />
+    <Property Name="totalAmount" Type="decimal" Precision="9" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'netflorist.dbo.Product_Images' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Product_Images">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="ProductCategory" />
+      <PropertyRef Name="ProductDescription" />
+      <PropertyRef Name="ProductPrice" />
+      <PropertyRef Name="Picture" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductPrice" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Images_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Images" Type="Self.Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOrder_Driver">
+    <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+    <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="DriverID" />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="DriverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOrder_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="netfloristModelStoreContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Delivery" EntityType="Self.Delivery" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Delivery].[CustomerID] AS [CustomerID], 
+    [Delivery].[ReceiverName] AS [ReceiverName], 
+    [Delivery].[ReceiverSurname] AS [ReceiverSurname], 
+    [Delivery].[ReceiverCellNumber] AS [ReceiverCellNumber], 
+    [Delivery].[StreetAddress] AS [StreetAddress], 
+    [Delivery].[Suburb] AS [Suburb], 
+    [Delivery].[OrderDate] AS [OrderDate], 
+    [Delivery].[DeliveryStatus] AS [DeliveryStatus], 
+    [Delivery].[Products] AS [Products], 
+    [Delivery].[Quantity] AS [Quantity], 
+    [Delivery].[DriverID] AS [DriverID], 
+    [Delivery].[OrderID] AS [OrderID], 
+    [Delivery].[DeliveryDate] AS [DeliveryDate], 
+    [Delivery].[ReceiverEmail] AS [ReceiverEmail], 
+    [Delivery].[PostalCode] AS [PostalCode], 
+    [Delivery].[City] AS [City], 
+    [Delivery].[totalAmount] AS [totalAmount]
+    FROM [dbo].[Delivery] AS [Delivery]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Product_Images" EntityType="Self.Product_Images" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Product_Images].[ProductID] AS [ProductID], 
+    [Product_Images].[ProductName] AS [ProductName], 
+    [Product_Images].[ProductCategory] AS [ProductCategory], 
+    [Product_Images].[ProductDescription] AS [ProductDescription], 
+    [Product_Images].[ProductPrice] AS [ProductPrice], 
+    [Product_Images].[Picture] AS [Picture]
+    FROM [dbo].[Product_Images] AS [Product_Images]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Images_Product" Association="Self.FK_Images_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Customer" Association="Self.FK_Payment_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Order" Association="Self.FK_Payment_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOrder_Driver" Association="Self.FK_ProductOrder_Driver">
+      <End Role="Driver" EntitySet="Driver" />
+      <End Role="ProductOrder" EntitySet="ProductOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOrder_Order" Association="Self.FK_ProductOrder_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="ProductOrder" EntitySet="ProductOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

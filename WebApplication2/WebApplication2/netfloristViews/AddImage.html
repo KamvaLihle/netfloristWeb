@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/LoginApp.js"></script>
+    <script src="../scripts/LoginService.js"></script>
+    <script src="../scripts/angular-cookies.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="../Content/signin.css" rel="stylesheet" />
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="LoginApp">
+    <div class="container" ng-controller="ImageController">
+        <h2>Add Images</h2>
+        <table class="table table-hover table-responsive">
+            <tr>
+                <th>Image ID</th>
+                <th>ProductID</th>
+                <th>Picture</th>
+            </tr>
+            <tr ng-repeat="img in image">
+                <td>{{img.ImageID}}</td>
+                <td>{{img.ProductID}}</td>
+                <td><img ng-src="data:image/JPEG;base64,{{img.Picture}}" /></td>
+                <td><a class="btn btn-danger btn-lg" ng-click="removeImage(img)">Delete</a></td>
+            </tr>
+        </table>
+        <div class="container">
+            <div class="col-lg-7">
+                <input type="file" multiple ng-files="myFile" />
+            </div>
+            <div class="col-lg-5">
+                <input type="button" class="btn btn-primary" ng-click="uploadFile(img)" value="Upload" />
+                <input ng-disabled="!imagesrc.length" type="button" class="btn btn-primary" ng-click="reset()" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

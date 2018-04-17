@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="WebApplication2.Models.netfloristEntities3">
+    <Position X="19.5" Y="10.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAABAAJAAIAAEAAAAAAAEAQAABAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Net.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Administrator">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAABAAAAAAAAAABAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Customer">
+    <Position X="14.5" Y="0.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAABAgAAgAAAAgAAAAAAAAAAAAAAAigAAAAA=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Delivery">
+    <Position X="11.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CBCAABAAAAAAABgYNAAAAAAAEAAAAQAAAgAAgAAAABQ=</HashCode>
+      <FileName>Models\Delivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Driver">
+    <Position X="0.5" Y="7" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEAAAAAAAAAAQAAAgKAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Driver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Image">
+    <Position X="6.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACgAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Order">
+    <Position X="6.75" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>CAGAABAAAABCgAgYNAAAAAAAAAQAAQAAAgAAAAAAABA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Payment">
+    <Position X="5" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAEAABAAACAAgAAIIAAAAAEAAAEAABACIBAAAAAAEAA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Product">
+    <Position X="11.5" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAIAAAAAAgAABAAAAABAAACAAAEAIEAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Product_Images">
+    <Position X="8.5" Y="10.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAgAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAIEAA=</HashCode>
+      <FileName>Models\Product_Images.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.ProductOrder">
+    <Position X="16" Y="10.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABEAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgIAAAAQ=</HashCode>
+      <FileName>Models\ProductOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Supplier">
+    <Position X="3.25" Y="1.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAKgAAAAAAAQ=</HashCode>
+      <FileName>Models\Supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="20.75" Y="1" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

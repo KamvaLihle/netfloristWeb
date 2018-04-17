@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-cookies.js"></script>
+    <script src="../scripts/LoginApp.js"></script>
+    <script src="../scripts/LoginService.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="../Content/fontawesome-all.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body style="padding-top:80px" ng-app="LoginApp" ng-controller="ProductsController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">FlowerPop</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" ng-if="adminname">
+                <ul class="nav navbar-nav">
+                    <li class ="active"><a href="">Manage Users</a></li>
+                    <li><a href="../netfloristViews/ManageProducts.html" >Manage Products</a></li>
+                    <li><a href="../netfloristViews/AddImage.html">Add Images</a></li>
+                    <li><a href="../netfloristViews/ManageDeliveries.html">Manage Deliveries</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Hi! {{adminname}}</a></li>
+                    <li><a ng-click="logOut()"><span class="fas fa-sign-out-alt"></span>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 class="text-center">Customer</h2>
+    <div class="container" ng-controller="CustomersController">
+        <table class="table table-hover table-responsive table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>Email</th>
+            </tr>
+
+            <tr ng-repeat="cus in customer">
+                <td>{{cus.ID}}</td>
+                <td>{{cus.firstName}}</td>
+                <td>{{cus.lastName}}</td>
+                <td>{{cus.gender}}</td>
+                <td>{{cus.mobile}}</td>
+                <td>{{cus.email}}</td>
+            </tr>
+        </table>
+    </div>
+    <h2 class="text-center">Suppliers</h2>
+    <div class="container" ng-controller="SupplierController">
+        <table class="table table-hover table-responsive table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+
+            <tr ng-repeat="sup in supplier">
+                <td>{{sup.SupplierID}}</td>
+                <td>{{sup.SupplierName}}</td>
+                <td>{{sup.SupplierEmail}}</td>
+            </tr>
+        </table>
+    </div>
+    <h2 class="text-center">Drivers</h2>
+    <div class="container" ng-controller="DriverController">
+        <table class="table table-hover table-responsive table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+            </tr>
+
+            <tr ng-repeat="drive in driver">
+                <td>{{drive.DriverID}}</td>
+                <td>{{drive.DriverName}}</td>
+                <td>{{drive.DriverSurname}}</td>
+                <td>{{drive.DriverEmail}}</td>
+            </tr>
+        </table>
+    </div>
+        <script>
+    $(document).ready(function(){
+    $("#myAddProductBtn").click(function(){
+        $("#AddProductModal").modal();
+    });
+});
+        </script>
+</body>
+</html>

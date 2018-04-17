@@ -1,0 +1,242 @@
+﻿body{
+    padding-bottom:100px;
+   
+}
+
+.icon{
+    color:#E3435D;
+}
+.iconbar{
+    color:#ffffff;
+}
+.iconbar:hover{
+    color:#E3435D;
+}
+  /*Teboho*/
+ .item-block{
+	padding:10px;
+}
+.item-name{
+	font-size:15px;
+	text-align:center;
+}
+.item-image{
+	margin:0 auto;
+	padding:15px;
+}
+.item-stock{
+	display:inline-block;
+	font-size:20px;
+	text-align:left;
+}
+.item-price{
+	font-size:15px;
+	text-align:center;
+}
+
+.wishlist-button{
+	border:1px solid #E3435D;
+    border: 1px solid #E3435D;
+	color:#E3435D;
+	width:100%;
+}
+.wishlist-button:hover,.wishlist-button:focus{
+    background-color:#E3435D;
+    border: 1px solid #E3435D;
+    color:#ffffff;
+    transition:all 0.1s;
+    
+}
+.cart-button{
+	background-color:#E3435D;
+    border: 1px solid #E3435D;
+	color:#FFF;
+    transition:all 0.1s;
+}
+.cart-button:hover,.cart-button:focus{
+    background-color:#fff;
+    border: 1px solid #E3435D;
+    color:#E3435D;
+    transition:all 0.1s;
+}
+.search-button{
+    background-color:#fff;
+    border: 1px solid #ffffff;
+    color:#E3435D;
+    transition:all 0.1s;
+}
+#search{
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 2px solid #fff;
+  border-radius: 2px;
+
+}
+.form-signin {
+  max-width: 450px;
+  padding: 55px;
+  margin: 0 auto;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  margin:10px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin button{
+    margin:10px;
+}
+.ToolBarSpace {
+    width: 100%;
+    height: 65px;
+    padding:5px;
+    white-space: nowrap;
+    font-size: 10px;
+    line-height: 0;
+    position: relative;
+    display: inline-block
+}
+.ToolBarSpace #basket-button{
+    color:#fff;
+    float:right;
+    text-decoration:none;
+}
+.ToolBarSpace p{
+    display:inline-block;
+    color:#fff;
+     text-decoration:none;
+}
+.cart-display{ 
+    background-color:#E3435D;
+    color:#fff;font-size:18px;
+    height:auto;
+    width:auto;
+    padding:15px;
+    text-decoration:none;
+}
+
+.cart-display i {
+    color:#fff;
+    text-decoration:none;
+}
+
+.button-drop{
+    position: relative;
+    float:right;
+    display: inline-block;
+}
+.cart-details{
+    display: none;
+    position: absolute;
+    background-color:#ffffff;
+    padding:50px;
+    right:0;
+    top:60px;
+    z-index: 1;
+}
+.button-drop:hover .cart-details{
+    display:block;
+}
+.shopping-button {
+    background-color:#0d47a1;
+	border:1px solid #0d47a1;
+	color:#fff;
+	width:100%;
+}
+.shopping-button:hover,.shopping-button:focus{
+    background-color:#fff;
+    border: 1px solid #0d47a1;
+    color:#0d47a1;
+    transition:all 0.1s;
+    
+}
+.cartSummary{
+    background-color:#fff;
+    border: 2px solid #E3435D;
+    padding: 5px 20px 15px 20px;
+    border-radius: 3px;
+
+}
+span.price {
+    float:right;
+    color:#E3435D;
+}
+.checkout-button{
+    background-color:#00b202;
+    border: 1px solid #00b202;
+	color:#fff;
+	width:100%;
+}
+.checkout-button:hover,.checkout-button:focus{
+    background-color:#fff;
+    border: 1px solid #00b202;
+    color:#00b202;
+    transition:all 0.1s;
+    
+}
+.cart-display i:hover,i:focus {
+    color:#E3435D;
+    text-decoration:none;
+}
+.add-product{
+    width:60%;
+}
+
+.info-style{
+    font-size:24px;
+}
+
+.receipt {
+    background-color: #bf5f82;
+    border: 2px solid #bf5f82;
+    border-radius: 20px;
+    color: #fff;
+    padding: 20px;
+}
+.receipt-header {
+    font-size: 40px;
+    text-align: center;
+}
+.receipt-body {
+    display:inline;
+    font-size: 25px;
+}
+
+    .receipt-body #date{
+        text-align:right;
+    }
+.receipt-footer {
+    font-size: 50px;
+    text-align:center;
+}
+.btn-confirm {
+    background-color: #87094d;
+    color:#fff;
+}
+.btn-confirm {
+    background-color: #87094d;
+    border: 2px solid #87094d;
+    border-radius:15px;
+    color: #fff;
+    transition:all 0.1s;
+}
+.btn-confirm:hover {
+        background-color: #fff;
+        border: 2px solid #87094d;
+        color: #87094d;
+        transition: all 0.1s;
+    }

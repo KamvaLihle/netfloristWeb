@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/LoginApp.js"></script>
+    <script src="scripts/LoginService.js"></script>
+    <script src="scripts/angular-cookies.min.js"></script>
+    <link href="Content/signin.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/fontawesome-all.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+    <!-- jQuery library -->
+    <script src="scripts/bootstrap.min.js"></script>
+    <title></title>
+	<meta charset="utf-8" />   
+</head>
+<body ng-app="LoginApp">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">FlowerPop</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fas fa-search icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right" >
+                    <li><a href="Register.html"><span class="fas fa-sign-in-alt"></span>Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container box" ng-controller="LoginController" >
+        <form name="loginForm" class="form-signin" >
+            <h2 class="form-signin-heading">Login</h2>
+            <label class="sr-only">ID No:</label>
+            <input class="form-control" type="text" placeholder="ID Number" ng-model="ID" required />
+            <label class="sr-only">Password: </label>
+            <input class="form-control" type="password" placeholder="Password" ng-model="Password" required/>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" ng-click="AccessUser()" type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <div class="text-center">
+    <div class="alert alert-success alert-dismissible" id="goodalert">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> You have successfully logged in!
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" id="badalert">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> Sorry we could not login please contact the administrator!
+    </div>
+</div>
+
+</body>
+</html>
